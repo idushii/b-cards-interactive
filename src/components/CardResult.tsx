@@ -23,11 +23,15 @@ const CardResult = tsx.componentFactoryOf<IEvents>().create({
             let target = document.getElementById('ex5');
             if (document.createRange) {
                 let rng = document.createRange();
+                //@ts-ignore
                 rng.selectNode(target)
                 let sel = window.getSelection();
+                //@ts-ignore
                 sel.removeAllRanges();
+                //@ts-ignore
                 sel.addRange(rng);
             } else {
+                //@ts-ignore
                 var rng = document.body.createTextRange();
                 rng.moveToElementText(target);
                 rng.select();

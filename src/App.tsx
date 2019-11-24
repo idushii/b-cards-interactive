@@ -130,7 +130,8 @@ const App = tsx.component({
         async setProp(prop: { name: any, value: any }) {
             let index = this.cardProps.findIndex(item => item.name == prop.name)
             this.$set(this.cardProps[index], 'state', prop.value)
-            this.cardProps.push({})
+            //@ts-ignore
+            this.cardProps.push(null)
             this.cardProps.pop()
             await this.$nextTick()
             //@ts-ignore

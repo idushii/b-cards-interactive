@@ -12,6 +12,8 @@ const CardForm = tsx.componentFactoryOf<IEvents>().create({
     hasTitle: { type: Boolean },
     hasText: { type: Boolean },
     hasFooter: { type: Boolean },
+    hasLinks: { type: Boolean },
+    hasSubTitle: { type: Boolean },
   },
 
   methods: {
@@ -39,12 +41,18 @@ const CardForm = tsx.componentFactoryOf<IEvents>().create({
     this.$refs.hasText.checked = this.hasText
     //@ts-ignore
     this.$refs.hasFooter.checked = this.hasFooter
+    //@ts-ignore
+    this.$refs.hasLinks.checked = this.hasLinks
+    //@ts-ignore
+    this.$refs.hasSubTitle.checked = this.hasSubTitle
   },
 
   render(): VNode {
     let hasHeader = this.newCheckBox('hasHeader', 'Шапка', this.hasHeader ? 'on' : 'off')
     let hasTitle = this.newCheckBox('hasTitle', 'Заголовок', this.hasTitle ? 'on' : 'off')
+    let hasSubTitle = this.newCheckBox('hasSubTitle', 'Подзаголовок', this.hasSubTitle ? 'on' : 'off')
     let hasText = this.newCheckBox('hasText', 'Текст', this.hasText ? 'on' : 'off')
+    let hasLinks = this.newCheckBox('hasLinks', 'Ссылки', this.hasLinks ? 'on' : 'off')
     let hasFooter = this.newCheckBox('hasFooter', 'Футер', this.hasFooter ? 'on' : 'off')
 
     return (
@@ -55,7 +63,9 @@ const CardForm = tsx.componentFactoryOf<IEvents>().create({
         <div class="card-body">
           {hasHeader}
           {hasTitle}
+          {hasSubTitle}
           {hasText}
+          {hasLinks}
           {hasFooter}
         </div>
       </div>

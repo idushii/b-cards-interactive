@@ -9,10 +9,12 @@ const App = tsx.component({
     name: 'App',
 
     data: () => ({
-        hasHeader: true,
-        hasFooter: true,
+        hasHeader: false,
+        hasFooter: false,
         hasTitle: true,
+        hasSubTitle: false,
         hasText: true,
+        hasLinks: true,
         code: ''
     }),
 
@@ -45,6 +47,8 @@ const App = tsx.component({
                                 hasFooter={this.hasFooter}
                                 hasText={this.hasText}
                                 hasTitle={this.hasTitle}
+                                hasSubTitle={this.hasSubTitle}
+                                hasLinks={this.hasLinks}
                                 onChange={this.setProp}
                             />
                         </div>
@@ -54,7 +58,9 @@ const App = tsx.component({
                                 hasHeader={this.hasHeader}
                                 hasFooter={this.hasFooter}
                                 hasText={this.hasText}
+                                hasLinks={this.hasLinks}
                                 hasTitle={this.hasTitle}
+                                hasSubTitle={this.hasSubTitle}
                             />
                         </div>
                         <div class="col col-12">

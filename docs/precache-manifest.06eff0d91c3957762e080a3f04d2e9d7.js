@@ -8,7 +8,7 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/b-cards-interactive/img/logo.82b9c7a5.png"
   },
   {
-    "revision": "49ec7846ebd613f8724c975f5719218c",
+    "revision": "c54089e3198d0f3c0b061ef7674e574f",
     "url": "/b-cards-interactive/index.html"
   },
   {
@@ -16,8 +16,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/b-cards-interactive/js/about.28a9f690.js"
   },
   {
-    "revision": "3c9a1eddd44b09a99ece",
-    "url": "/b-cards-interactive/js/app.68b5262e.js"
+    "revision": "836e99e93b438dacec3f",
+    "url": "/b-cards-interactive/js/app.f9938e2f.js"
   },
   {
     "revision": "7c705678c50f0b6fa20b",

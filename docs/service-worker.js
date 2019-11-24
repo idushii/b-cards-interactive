@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
 importScripts(
-  "/b-cards-interactive/precache-manifest.97465122b67d19eb3e824b5220fee242.js"
+  "/b-cards-interactive/precache-manifest.06eff0d91c3957762e080a3f04d2e9d7.js"
 );
 
 workbox.core.setCacheNameDetails({prefix: "b-cards-interactive"});

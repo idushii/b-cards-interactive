@@ -1,6 +1,6 @@
 <template>
   <div class="container">
-    <h1 class="display-1">Интерактивный пример card bootstrap</h1>
+    <h1 class="display-4">Интерактивный пример card bootstrap</h1>
     <Card />
   </div>
 </template>
@@ -18,4 +18,5 @@ export default class App extends Vue {}
 </script>
 
 <style lang="scss">
+@import "~bootstrap/scss/bootstrap";
 </style>

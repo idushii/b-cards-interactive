@@ -56,6 +56,13 @@ const App = tsx.component({
                 group: 'card-header'
             },
             {
+                state: false,
+                name: 'image',
+                title: 'Изображение',
+                html: '<img src="https://via.placeholder.com/150x80" class="card-img-top" alt="https://via.placeholder.com/150x80">',
+                group: 'card-header'
+            },
+            {
                 name: 'split'
             },
             {
@@ -148,12 +155,6 @@ const App = tsx.component({
                         <div class="col col-6">
                             <CardForm
                                 cardProps={this.cardProps}
-                                hasHeader={this.hasHeader}
-                                hasFooter={this.hasFooter}
-                                hasText={this.hasText}
-                                hasTitle={this.hasTitle}
-                                hasSubTitle={this.hasSubTitle}
-                                hasLinks={this.hasLinks}
                                 onChange={this.setProp}
                             />
                         </div>
@@ -161,15 +162,9 @@ const App = tsx.component({
                             <CardSample
                                 ref="CardSample"
                                 cardProps={this.cardProps}
-                                hasHeader={this.hasHeader}
-                                hasFooter={this.hasFooter}
-                                hasText={this.hasText}
-                                hasLinks={this.hasLinks}
-                                hasTitle={this.hasTitle}
-                                hasSubTitle={this.hasSubTitle}
                             />
                         </div>
-                        <div class="col col-12">
+                        <div class="col col-12 mt-5">
                             <pre>
                                 <CardResult code={this.code} />
                             </pre>

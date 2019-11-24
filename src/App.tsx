@@ -7,6 +7,13 @@ import { CardSample } from "./components/CardSample";
 const App = tsx.component({
     name: 'App',
 
+    data: () => ({
+        hasHeader: true,
+        hasFooter: true,
+        hasTitle: true,
+        hasText: true,
+    }),
+
     render(): VNode {
         return (
             <div id="app">
@@ -19,7 +26,12 @@ const App = tsx.component({
                             <CardForm />
                         </div>
                         <div class="col col-6">
-                            <CardSample />
+                            <CardSample
+                                hasHeader={this.hasHeader}
+                                hasFooter={this.hasFooter}
+                                hasText={this.hasText}
+                                hasTitle={this.hasTitle}
+                            />
                         </div>
                         <div class="col col-6"></div>
                     </div>

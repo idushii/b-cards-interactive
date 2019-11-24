@@ -14,7 +14,7 @@ const CardSample = tsx.component({
   },
 
   render(): VNode {
-    let html, htmlHead = '', htmlBody = '', htmlFooter = ''
+    let html, htmlHead = '', htmlBody = '', htmlFooter = '', htmlList = '';
 
     interface IItem {
       name: string,
@@ -36,10 +36,15 @@ const CardSample = tsx.component({
       if (item.group == 'card-footer') {
         htmlFooter += item.html
       }
+      if (item.group == 'list') {
+        htmlList += item.html
+      }
 
     }
 
-    html = `${htmlHead}<div class="card-body">${htmlBody}</div>${htmlFooter}`
+    if (htmlBody) htmlBody = `<div class="card-body">${htmlBody}</div>`
+
+    html = `${htmlHead}${htmlBody}${htmlList}${htmlFooter}`
 
     return (
       <div class="card" domPropsInnerHTML={html}>

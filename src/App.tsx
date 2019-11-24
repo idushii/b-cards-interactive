@@ -111,6 +111,17 @@ const App = tsx.component({
             },
             {
                 state: false,
+                name: 'list',
+                title: 'Список',
+                html: `  <ul class="list-group list-group-flush">
+                    <li class="list-group-item">Cras justo odio</li>
+                    <li class="list-group-item">Dapibus ac facilisis in</li>
+                    <li class="list-group-item">Vestibulum at eros</li>
+                </ul>`,
+                group: 'list'
+            },
+            {
+                state: false,
                 name: 'Footer',
                 title: 'Футер',
                 html: '<div class="card-footer">Footer</div>',

@@ -4,6 +4,7 @@ import { VNode } from 'vue'
 import { CardForm } from "./components/CardForm";
 import { CardSample } from "./components/CardSample";
 
+
 const App = tsx.component({
     name: 'App',
 
@@ -14,6 +15,12 @@ const App = tsx.component({
         hasText: true,
     }),
 
+    methods: {
+        setProp(prop: { name: any, value: any }) {
+            this.$data[prop.name] = prop.value
+        }
+    },
+
     render(): VNode {
         return (
             <div id="app">
@@ -22,8 +29,14 @@ const App = tsx.component({
                 </nav>
                 <div class="container">
                     <div class="row">
-                        <div class="col col-12">
-                            <CardForm />
+                        <div class="col col-12 mb-4">
+                            <CardForm
+                                hasHeader={this.hasHeader}
+                                hasFooter={this.hasFooter}
+                                hasText={this.hasText}
+                                hasTitle={this.hasTitle}
+                                onChange={this.setProp}
+                            />
                         </div>
                         <div class="col col-6">
                             <CardSample

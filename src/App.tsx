@@ -3,7 +3,7 @@ import { VNode } from 'vue'
 
 import { CardForm } from "./components/CardForm";
 import { CardSample } from "./components/CardSample";
-
+import { CardResult } from "./components/CardResult";
 
 const App = tsx.component({
     name: 'App',
@@ -13,12 +13,22 @@ const App = tsx.component({
         hasFooter: true,
         hasTitle: true,
         hasText: true,
+        code: ''
     }),
 
     methods: {
-        setProp(prop: { name: any, value: any }) {
+        async setProp(prop: { name: any, value: any }) {
             this.$data[prop.name] = prop.value
+            await this.$nextTick()
+            //@ts-ignore
+            this.code = this.$refs.CardSample.$el.outerHTML
         }
+    },
+
+    async mounted() {
+        await this.$nextTick()
+        //@ts-ignore
+        this.code = this.$refs.CardSample.$el.outerHTML
     },
 
     render(): VNode {
@@ -29,7 +39,7 @@ const App = tsx.component({
                 </nav>
                 <div class="container">
                     <div class="row">
-                        <div class="col col-12 mb-4">
+                        <div class="col col-6">
                             <CardForm
                                 hasHeader={this.hasHeader}
                                 hasFooter={this.hasFooter}
@@ -40,13 +50,18 @@ const App = tsx.component({
                         </div>
                         <div class="col col-6">
                             <CardSample
+                                ref="CardSample"
                                 hasHeader={this.hasHeader}
                                 hasFooter={this.hasFooter}
                                 hasText={this.hasText}
                                 hasTitle={this.hasTitle}
                             />
                         </div>
-                        <div class="col col-6"></div>
+                        <div class="col col-12">
+                            <pre>
+                                <CardResult code={this.code} />
+                            </pre>
+                        </div>
                     </div>
                 </div>
             </div>

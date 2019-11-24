@@ -1,18 +1,17 @@
 <template>
   <div class="home">
     <img alt="Vue logo" src="../assets/logo.png">
-    <Card msg="Welcome to Your Vue.js App"/>
   </div>
 </template>
 
 <script>
 // @ is an alias to /src
-import Card from '@/components/Card.vue'
+//import Card from '@/components/Card.vue'
 
 export default {
   name: 'home',
   components: {
-    Card
+    //Card
   }
 }
 </script>

@@ -171,6 +171,9 @@ const App = tsx.component({
                         </div>
                     </div>
                 </div>
+                <footer class="text-center mb-4">
+                    <a href="https://getbootstrap.com/docs/4.3/components/card/" target="_blank">Документация</a>
+                </footer>
             </div>
         )
     }

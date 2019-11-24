@@ -34,9 +34,12 @@ const CardForm = tsx.componentFactoryOf<IEvents>().create({
   },
 
   mounted() {
-    for (let prop of this.cardProps)
+    for (let prop of this.cardProps) {
+      //@ts-ignore
+      if (prop.name == 'split') continue;
       //@ts-ignore
       this.$refs[prop.name].checked = prop.state
+    }
   },
 
   render(): VNode {
@@ -44,7 +47,8 @@ const CardForm = tsx.componentFactoryOf<IEvents>().create({
     for (let key in this.cardProps) {
       //@ts-ignore
       let { name, title, value } = this.cardProps[key]
-      items.push(this.newCheckBox(name, title, 'off'))
+      if (name == 'split') items.push(<hr />)
+      else items.push(this.newCheckBox(name, title, 'off'))
     }
 
     return (

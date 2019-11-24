@@ -37,6 +37,28 @@ const App = tsx.component({
                 group: 'card-header'
             },
             {
+                state: false,
+                name: 'header-nav-pill',
+                title: 'Переключатели',
+                html: `  <div class="card-header">
+                <ul class="nav nav-pills card-header-pills">
+                  <li class="nav-item">
+                    <a class="nav-link active" href="#">Active</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="#">Link</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
+                  </li>
+                </ul>
+              </div>`,
+                group: 'card-header'
+            },
+            {
+                name: 'split'
+            },
+            {
                 state: true,
                 name: 'title',
                 title: 'Заголовок',
@@ -51,11 +73,17 @@ const App = tsx.component({
                 group: 'card-body'
             },
             {
+                name: 'split'
+            },
+            {
                 state: true,
                 name: 'text',
                 title: 'Текст',
                 html: '<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusantium aspernatur molestiae obcaecati nemo sapiente assumenda eveniet dolorem ea quod, nesciunt optio amet illum quidem quis voluptatem doloremque ab ullam ratione?</p>',
                 group: 'card-body'
+            },
+            {
+                name: 'split'
             },
             {
                 state: true,
@@ -70,6 +98,9 @@ const App = tsx.component({
                 title: 'Кнопка',
                 html: '<a href="#" class="btn btn-primary">Lorem ipsum</a>',
                 group: 'card-body'
+            },
+            {
+                name: 'split'
             },
             {
                 state: false,

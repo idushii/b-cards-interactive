@@ -1,18 +1,22 @@
 <template>
-  <div class="container">
-    <h1 class="display-4">Интерактивный пример card bootstrap</h1>
-    <Card />
+  <div id="app">
+    <nav class="navbar navbar-dark bg-primary mb-3">
+      <a class="navbar-brand" href="#">Интерактивный пример card</a>
+    </nav>
+    <div class="container">
+      <Card />
+    </div>
   </div>
 </template>
 
 <script lang="ts">
-import { Component, Vue } from 'vue-property-decorator';
-import Card from './components/Card.vue';
+import { Component, Vue } from "vue-property-decorator";
+import Card from "./components/Card.vue";
 
 @Component({
   components: {
-    Card,
-  },
+    Card
+  }
 })
 export default class App extends Vue {}
 </script>

@@ -8,6 +8,7 @@ interface IEvents {
 const CardForm = tsx.componentFactoryOf<IEvents>().create({
   name: 'CardForm',
   props: {
+    cardProps: { type: Array, default: () => ([]) },
     hasHeader: { type: Boolean },
     hasTitle: { type: Boolean },
     hasText: { type: Boolean },
@@ -19,7 +20,7 @@ const CardForm = tsx.componentFactoryOf<IEvents>().create({
   methods: {
     newCheckBox(name: string, title: string, value: any): VNode {
       return <div class="form-check">
-        <input class="form-check-input" type="checkbox" id={name} ref={name} onChange={(e) => this.emitChange(name, e.target.value)} />
+        <input class="form-check-input" type="checkbox" id={name} ref={name} checked={value} onChange={(e) => this.emitChange(name, e.target.value)} />
         <label class="form-check-label" for={name}>
           {title}
         </label>
@@ -32,28 +33,19 @@ const CardForm = tsx.componentFactoryOf<IEvents>().create({
     }
   },
 
-  mounted()  {
-    //@ts-ignore
-    this.$refs.hasHeader.checked = this.hasHeader
-    //@ts-ignore
-    this.$refs.hasTitle.checked = this.hasTitle
-    //@ts-ignore
-    this.$refs.hasText.checked = this.hasText
-    //@ts-ignore
-    this.$refs.hasFooter.checked = this.hasFooter
-    //@ts-ignore
-    this.$refs.hasLinks.checked = this.hasLinks
-    //@ts-ignore
-    this.$refs.hasSubTitle.checked = this.hasSubTitle
+  mounted() {
+    for (let prop of this.cardProps)
+      //@ts-ignore
+      this.$refs[prop.name].checked = prop.state
   },
 
   render(): VNode {
-    let hasHeader = this.newCheckBox('hasHeader', 'Шапка', this.hasHeader ? 'on' : 'off')
-    let hasTitle = this.newCheckBox('hasTitle', 'Заголовок', this.hasTitle ? 'on' : 'off')
-    let hasSubTitle = this.newCheckBox('hasSubTitle', 'Подзаголовок', this.hasSubTitle ? 'on' : 'off')
-    let hasText = this.newCheckBox('hasText', 'Текст', this.hasText ? 'on' : 'off')
-    let hasLinks = this.newCheckBox('hasLinks', 'Ссылки', this.hasLinks ? 'on' : 'off')
-    let hasFooter = this.newCheckBox('hasFooter', 'Футер', this.hasFooter ? 'on' : 'off')
+    let items = []
+    for (let key in this.cardProps) {
+      //@ts-ignore
+      let { name, title, value } = this.cardProps[key]
+      items.push(this.newCheckBox(name, title, 'off'))
+    }
 
     return (
       <div class="card">
@@ -61,12 +53,7 @@ const CardForm = tsx.componentFactoryOf<IEvents>().create({
           Конструктор
         </div>
         <div class="card-body">
-          {hasHeader}
-          {hasTitle}
-          {hasSubTitle}
-          {hasText}
-          {hasLinks}
-          {hasFooter}
+          {items}
         </div>
       </div>
     )

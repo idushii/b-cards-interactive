@@ -9,6 +9,57 @@ const App = tsx.component({
     name: 'App',
 
     data: () => ({
+        cardProps: [
+            {
+                state: false,
+                name: 'header',
+                title: 'Шапка',
+                html: '<div class="card-header">Header</div>',
+                group: 'card-header'
+            },
+            {
+                state: true,
+                name: 'title',
+                title: 'Заголовок',
+                html: '<h5 class="card-title">Title</h5>',
+                group: 'card-body'
+            },
+            {
+                state: true,
+                name: 'subtitle',
+                title: 'Подзаголовок',
+                html: '<h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>',
+                group: 'card-body'
+            },
+            {
+                state: true,
+                name: 'text',
+                title: 'Текст',
+                html: '<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusantium aspernatur molestiae obcaecati nemo sapiente assumenda eveniet dolorem ea quod, nesciunt optio amet illum quidem quis voluptatem doloremque ab ullam ratione?</p>',
+                group: 'card-body'
+            },
+            {
+                state: true,
+                name: 'links',
+                title: 'Ссылки',
+                html: '<a href="#" class="card-link">Card link</a> <a href="#" class="card-link">Another link</a>',
+                group: 'card-body'
+            },
+            {
+                state: false,
+                name: 'btn',
+                title: 'Кнопка',
+                html: '<a href="#" class="btn btn-primary">Lorem ipsum</a>',
+                group: 'card-body'
+            },
+            {
+                state: false,
+                name: 'Footer',
+                title: 'Футер',
+                html: '<div class="card-footer">Footer</div>',
+                group: 'card-footer'
+            },
+        ],
         hasHeader: false,
         hasFooter: false,
         hasTitle: true,
@@ -20,7 +71,10 @@ const App = tsx.component({
 
     methods: {
         async setProp(prop: { name: any, value: any }) {
-            this.$data[prop.name] = prop.value
+            let index = this.cardProps.findIndex(item => item.name == prop.name)
+            this.$set(this.cardProps[index], 'state', prop.value)
+            this.cardProps.push({})
+            this.cardProps.pop()
             await this.$nextTick()
             //@ts-ignore
             this.code = this.$refs.CardSample.$el.outerHTML
@@ -43,6 +97,7 @@ const App = tsx.component({
                     <div class="row">
                         <div class="col col-6">
                             <CardForm
+                                cardProps={this.cardProps}
                                 hasHeader={this.hasHeader}
                                 hasFooter={this.hasFooter}
                                 hasText={this.hasText}
@@ -55,6 +110,7 @@ const App = tsx.component({
                         <div class="col col-6">
                             <CardSample
                                 ref="CardSample"
+                                cardProps={this.cardProps}
                                 hasHeader={this.hasHeader}
                                 hasFooter={this.hasFooter}
                                 hasText={this.hasText}

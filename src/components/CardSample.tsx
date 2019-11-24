@@ -5,7 +5,7 @@ const CardSample = tsx.component({
   name: 'CardSample',
 
   props: {
-    hasHeader: { default: true, },
+    cardProps: { type: Array, default: () => ([]) },
     hasFooter: { default: true, },
     hasTitle: { default: true, },
     hasText: { default: true, },
@@ -14,44 +14,37 @@ const CardSample = tsx.component({
   },
 
   render(): VNode {
-    const { hasHeader, hasFooter } = this
+    let html, htmlHead = '', htmlBody = '', htmlFooter = ''
 
-    let header, footer, title, text, links: any[] = [], subtitle
-    if (hasHeader) {
-      header =
-        <div class="card-header">
-          header
-        </div>
-    }
-    if (hasFooter) {
-      footer =
-        <div class="card-footer">
-          footer
-        </div>
-    }
-    if (this.hasTitle) {
-      title = <h5 class="card-title">Title</h5>
-    }
-    if (this.hasText) {
-      text = <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusantium aspernatur molestiae obcaecati nemo sapiente assumenda eveniet dolorem ea quod, nesciunt optio amet illum quidem quis voluptatem doloremque ab ullam ratione?</p>
-    }
-    if (this.hasLinks) {
-      links = [<a href="#" class="card-link">Card link</a>, <a href="#" class="card-link">Another link</a>]
+    interface IItem {
+      name: string,
+      state: boolean,
+      html: string,
+      group: string
     }
 
-    if (this.hasSubTitle) subtitle = <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
+    for (let key in this.cardProps) {
+      //@ts-ignore
+      let item: IItem = this.cardProps[key]
+      if (!item.state) continue;
+      if (item.group == 'card-header') {
+        htmlHead += item.html
+      }
+      if (item.group == 'card-body') {
+        htmlBody += item.html
+      }
+      if (item.group == 'card-footer') {
+        htmlFooter += item.html
+      }
 
+    }
+
+    html = `${htmlHead}<div class="card-body">${htmlBody}</div>${htmlFooter}`
 
     return (
-      <div class="card">
-        {header}
-        <div class="card-body">
-          {title}
-          {subtitle}
-          {text}
-          {links}
-        </div>
-        {footer}
+      <div class="card" domPropsInnerHTML={html}>
+        <div class="card-header">Header</div>
+        <div class="card-footer">Footer</div>
       </div>
     )
   }
